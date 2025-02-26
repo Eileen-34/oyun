@@ -44,7 +44,7 @@ void Game::run() {
 }
 
 void Game::handleEvents() {
-    sf::Event event;
+    sf::Event event{};
     while (window.pollEvent(event)) {
         if (event.type == sf::Event::Closed) {
             window.close();
@@ -56,7 +56,7 @@ void Game::handleEvents() {
                 menu.handleEvent(event, window);
                 break;
             case GameState::Rules:
-                about.handleEvent(event, window);
+                gameRules.handleEvent(event, window);
                 break;
             case GameState::About:
                 about.handleEvent(event, window);

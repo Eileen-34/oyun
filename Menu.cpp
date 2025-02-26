@@ -49,3 +49,7 @@ void Menu::setOnAboutClicked(std::function<void()> onClick) {
 void Menu::setOnExitClicked(std::function<void()> onClick) {
     buttons[4].setOnClick(onClick);
 }
+
+/// TODO
+/// using namespace sf;   in order to shorten sf::
+/// RenderWindow window(VideoMode({640, 48}), "hello World Example");
