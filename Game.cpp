@@ -1,10 +1,12 @@
 #include "Game.h"
 
 Game::Game()
-        : window(sf::VideoMode(800, 800), "Rock-Paper-Scissors"),
+        : window(sf::VideoMode(800, 800), "Rock Paper Scissors Game"),
           menu(font),
-          about(font),
+          play(font),
           gameRules(font),
+          about(font),
+
           currentState(GameState::Menu) {
     // Load background image
     if (!backgroundTexture.loadFromFile("../assets/bigger+logo.jpg")) {
@@ -23,7 +25,7 @@ Game::Game()
     }
 
     // Set up menu button callbacks
-    menu.setOnPlayClicked([this]() { currentState = GameState::Play; });
+    menu.setOnPlayClicked([this]() { currentState = GameState::Play; play.reset(); }); // Switch to Play page
     menu.setOnScoresClicked([this]() { currentState = GameState::Scores; });
     menu.setOnRulesClicked([this]() { currentState = GameState::Rules; });
     menu.setOnAboutClicked([this]() { currentState = GameState::About; });
@@ -46,14 +48,22 @@ void Game::run() {
 void Game::handleEvents() {
     sf::Event event{};
     while (window.pollEvent(event)) {
-        if (event.type == sf::Event::Closed) {
+        if (event.type == sf::Event::Closed) { /// TODO oder event->is<Event::Closed>())
             window.close();
         }
+        //else if (event->is<Event::KeyPressed>()) {
+        //  if (keyPressed->scanCode == Keyboard::Scancode::Escape) {
+        //  window.close();
+        //  }
+        // }
 
         // Handle events based on the current state
         switch (currentState) {
             case GameState::Menu:
                 menu.handleEvent(event, window);
+                break;
+            case GameState::Play:
+                play.handleEvent(event, window);
                 break;
             case GameState::Rules:
                 gameRules.handleEvent(event, window);
@@ -72,6 +82,9 @@ void Game::update() {
     switch (currentState) {
         case GameState::Menu:
             menu.update(window);
+            break;
+        case GameState::Play:
+            play.update(window);
             break;
         case GameState::Rules:
             gameRules.update(window);
@@ -99,6 +112,9 @@ void Game::render() {
     switch (currentState) {
         case GameState::Menu:
             menu.draw(window);
+            break;
+        case GameState::Play:
+            play.draw(window);
             break;
         case GameState::Rules:
             gameRules.draw(window);

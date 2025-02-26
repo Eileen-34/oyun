@@ -3,7 +3,6 @@ project(oyun)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# Find SFML
 find_package(SFML 2.6.2 COMPONENTS graphics window system audio REQUIRED)
 
 add_executable(oyun main.cpp
@@ -17,6 +16,8 @@ add_executable(oyun main.cpp
         About.cpp
         GameRules.h
         GameRules.cpp
+        Play.h
+        Play.cpp
 )
 
 # Link SFML libraries

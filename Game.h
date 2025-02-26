@@ -5,6 +5,7 @@
 #include "Menu.h"
 #include "About.h"
 #include "GameRules.h"
+#include "Play.h"
 
 class Game {
 public:
@@ -21,8 +22,9 @@ private:
     sf::Sprite backgroundSprite;
     sf::Font font;
     Menu menu;
-    About about;
+    Play play;
     GameRules gameRules;
+    About about;
 
     enum class GameState {
         Menu,
