@@ -148,6 +148,10 @@ void Play::reset() {
     playerScore = 0;
     opponentScore = 0;
     currentRound = 1;
+
+    playerChoiceText.setString("");
+    opponentChoiceText.setString("");
+    resultText.setString("");
     updateTexts();
 }
 
