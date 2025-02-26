@@ -7,7 +7,7 @@ font(font),
 playerScore(0),
 opponentScore(0),
 currentRound(1),
-backToMenuButton("Back to Menu",font,sf::Vector2f(50, 700),sf::Vector2f(150, 50)),
+backToMenuButton("Back to Menu",font,sf::Vector2f(50, 700),sf::Vector2f(200, 50)),
 quitButton("Quit", font, sf::Vector2f(600, 700), sf::Vector2f(150, 50)) {
     // Seed the random number generator with the current time
     std::srand(std::time(0));
@@ -45,6 +45,18 @@ quitButton("Quit", font, sf::Vector2f(600, 700), sf::Vector2f(150, 50)) {
     opponentLabelText.setFont(font);
     playerScoreText.setFont(font);
     opponentScoreText.setFont(font);
+
+    // Initialize choice texts
+    playerChoiceText.setFont(font);
+    playerChoiceText.setCharacterSize(24);
+    playerChoiceText.setFillColor(sf::Color::White);
+    playerChoiceText.setPosition(50, 250);
+
+    opponentChoiceText.setFont(font);
+    opponentChoiceText.setCharacterSize(24);
+    opponentChoiceText.setFillColor(sf::Color::White);
+    opponentChoiceText.setPosition(600, 250);
+
     resultText.setFont(font);
     takeYourPickText.setFont(font); // Initialize "Take your pick" text
 
@@ -120,6 +132,10 @@ void Play::draw(sf::RenderWindow& window) const {
     window.draw(paperSprite);
     window.draw(scissorsSprite);
 
+    // Draw choice texts
+    window.draw(playerChoiceText);
+    window.draw(opponentChoiceText);
+
     // Draw "Take your pick" text
     window.draw(takeYourPickText);
 
@@ -136,6 +152,24 @@ void Play::reset() {
 }
 
 void Play::determineWinner(int playerChoice, int opponentChoice) {
+    std::string playerChoiceStr;
+    std::string computerChoiceStr;
+
+    switch (playerChoice) {
+        case 0: playerChoiceStr = "Rock"; break;
+        case 1: playerChoiceStr = "Paper"; break;
+        case 2: playerChoiceStr = "Scissors"; break;
+    }
+
+    switch (opponentChoice) {
+        case 0: computerChoiceStr = "Rock"; break;
+        case 1: computerChoiceStr = "Paper"; break;
+        case 2: computerChoiceStr = "Scissors"; break;
+    }
+
+    playerChoiceText.setString("Your choice: \n" + playerChoiceStr);
+    opponentChoiceText.setString("Computer's choice: \n" + computerChoiceStr);
+
     if (playerChoice == opponentChoice) {
         resultText.setString("It is a tie!");
     } else if ((playerChoice == 0 && opponentChoice == 2) ||

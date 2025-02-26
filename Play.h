@@ -23,6 +23,8 @@ private:
     sf::Text playerLabelText;
     sf::Text opponentLabelText;
     sf::Text playerScoreText;
+    sf::Text playerChoiceText;
+    sf::Text opponentChoiceText;
     sf::Text opponentScoreText;
     sf::Text resultText;
     sf::Text takeYourPickText;
