@@ -9,7 +9,7 @@ GameRules::GameRules(const sf::Font& font)
     backgroundSprite.setTexture(backgroundTexture);
 
     // Resize the background image to make it smaller
-    float scaleFactor = 0.5f; // Adjust this value to make the image smaller or larger
+    float scaleFactor = 0.1f; // Adjust this value to make the image smaller or larger
     backgroundSprite.setScale(scaleFactor, scaleFactor);
 
     // Position the background image at the top of the screen
@@ -20,7 +20,7 @@ GameRules::GameRules(const sf::Font& font)
     // Set up the "Game Rules" text
     rulesText.setFont(font);
     rulesText.setString(
-            "The game’s rules are pretty straightforward.\n"
+            "The rules are pretty straightforward.\n"
             "Players deliver hand signals representing rock, paper, or scissors,\n"
             "with the outcome determined by these three rules:\n"
             "\n"
@@ -31,10 +31,10 @@ GameRules::GameRules(const sf::Font& font)
     rulesText.setCharacterSize(26);
     rulesText.setFillColor(sf::Color::White);
 
-    // Position the text below the background image
-    float textX = (windowWidth - rulesText.getLocalBounds().width) / 2;
-    float textY = backgroundSprite.getPosition().y + backgroundSprite.getGlobalBounds().height + 20; // 20 pixels below the image
-    rulesText.setPosition(textX, textY);
+    // Center the "Rules" text on the screen
+    sf::FloatRect textBounds = rulesText.getLocalBounds();
+    rulesText.setOrigin(textBounds.width / 2, textBounds.height / 2);
+    rulesText.setPosition(120, 300); //
 }
 
 void GameRules::handleEvent(const sf::Event& event, const sf::RenderWindow& window) {
