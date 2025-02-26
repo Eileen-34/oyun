@@ -14,6 +14,9 @@ public:
 
     void reset();
 
+    void setOnBackToMenuClicked(std::function<void()> onClick);
+    void setOnQuitClicked(std::function<void()> onClick);
+
 private:
     sf::Font font;
     sf::Text roundText;
@@ -30,6 +33,9 @@ private:
     sf::Sprite rockSprite;
     sf::Sprite paperSprite;
     sf::Sprite scissorsSprite;
+
+    Button backToMenuButton;
+    Button quitButton;
 
     int playerScore;
     int opponentScore;

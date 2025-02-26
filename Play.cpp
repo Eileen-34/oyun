@@ -2,8 +2,13 @@
 #include <cstdlib>
 #include <ctime>
 
-Play::Play(const sf::Font& font)
-        : font(font), playerScore(0), opponentScore(0), currentRound(1) {
+Play::Play(const sf::Font& font):
+font(font),
+playerScore(0),
+opponentScore(0),
+currentRound(1),
+backToMenuButton("Back to Menu",font,sf::Vector2f(50, 700),sf::Vector2f(150, 50)),
+quitButton("Quit", font, sf::Vector2f(600, 700), sf::Vector2f(150, 50)) {
     // Seed the random number generator with the current time
     std::srand(std::time(0));
 
@@ -92,11 +97,15 @@ void Play::handleEvent(const sf::Event& event, const sf::RenderWindow& window) {
             int opponentChoice = rand() % 3;
             determineWinner(2, opponentChoice);
         }
+        // Handle button clicks
+        backToMenuButton.handleEvent(event, window);
+        quitButton.handleEvent(event, window);
     }
 }
 
 void Play::update(const sf::RenderWindow& window) {
-    // Update logic if needed
+    backToMenuButton.update(window);
+    quitButton.update(window);
 }
 
 void Play::draw(sf::RenderWindow& window) const {
@@ -113,6 +122,10 @@ void Play::draw(sf::RenderWindow& window) const {
 
     // Draw "Take your pick" text
     window.draw(takeYourPickText);
+
+    // Draw buttons
+    backToMenuButton.draw(window);
+    quitButton.draw(window);
 }
 
 void Play::reset() {
@@ -150,4 +163,12 @@ void Play::updateTexts() {
     roundText.setString("Round " + std::to_string(currentRound));
     playerScoreText.setString(std::to_string(playerScore));
     opponentScoreText.setString(std::to_string(opponentScore));
+}
+
+void Play::setOnBackToMenuClicked(std::function<void()> onClick) {
+    backToMenuButton.setOnClick(onClick);
+}
+
+void Play::setOnQuitClicked(std::function<void()> onClick) {
+    quitButton.setOnClick(onClick);
 }

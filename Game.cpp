@@ -31,6 +31,10 @@ Game::Game()
     menu.setOnAboutClicked([this]() { currentState = GameState::About; });
     menu.setOnExitClicked([this]() { currentState = GameState::Exit; });
 
+    // Set up Play page button callbacks
+    play.setOnBackToMenuClicked([this]() { currentState = GameState::Menu; });
+    play.setOnQuitClicked([this]() { window.close(); });
+
     // Set up the "Back to Menu" button callback in the GameRules page
     gameRules.setOnBackClicked([this]() { currentState = GameState::Menu; }); // Switch back to Menu
     // Set up the "Back to Menu" button callback in the About page
