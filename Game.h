@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "Menu.h"
 #include "About.h"
+#include "GameRules.h"
 
 class Game {
 public:
@@ -21,13 +22,16 @@ private:
     sf::Font font;
     Menu menu;
     About about;
+    GameRules gameRules;
+
     enum class GameState {
         Menu,
         Play,
         Scores,
         Rules,
         About,
-        Exit } currentState;
+        Exit
+    } currentState;
 };
 
 #endif //OYUN_GAME_H

@@ -4,6 +4,7 @@ Game::Game()
         : window(sf::VideoMode(800, 800), "Rock-Paper-Scissors"),
           menu(font),
           about(font),
+          gameRules(font),
           currentState(GameState::Menu) {
     // Load background image
     if (!backgroundTexture.loadFromFile("../assets/bigger+logo.jpg")) {
@@ -28,6 +29,8 @@ Game::Game()
     menu.setOnAboutClicked([this]() { currentState = GameState::About; });
     menu.setOnExitClicked([this]() { currentState = GameState::Exit; });
 
+    // Set up the "Back to Menu" button callback in the GameRules page
+    gameRules.setOnBackClicked([this]() { currentState = GameState::Menu; }); // Switch back to Menu
     // Set up the "Back to Menu" button callback in the About page
     about.setOnBackClicked([this]() { currentState = GameState::Menu; }); // Switch back to Menu
 }
@@ -52,6 +55,9 @@ void Game::handleEvents() {
             case GameState::Menu:
                 menu.handleEvent(event, window);
                 break;
+            case GameState::Rules:
+                about.handleEvent(event, window);
+                break;
             case GameState::About:
                 about.handleEvent(event, window);
                 break;
@@ -66,6 +72,9 @@ void Game::update() {
     switch (currentState) {
         case GameState::Menu:
             menu.update(window);
+            break;
+        case GameState::Rules:
+            gameRules.update(window);
             break;
         case GameState::About:
             about.update(window);
@@ -90,6 +99,9 @@ void Game::render() {
     switch (currentState) {
         case GameState::Menu:
             menu.draw(window);
+            break;
+        case GameState::Rules:
+            gameRules.draw(window);
             break;
         case GameState::About:
             about.draw(window);

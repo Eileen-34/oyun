@@ -15,6 +15,8 @@ add_executable(oyun main.cpp
         Game.cpp
         About.h
         About.cpp
+        GameRules.h
+        GameRules.cpp
 )
 
 # Link SFML libraries
