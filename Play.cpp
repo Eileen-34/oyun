@@ -35,6 +35,7 @@ Play::Play(const sf::Font& font)
 
     // Initialize texts
     roundText.setFont(font);
+    roundText.setCharacterSize(40);
     playerLabelText.setFont(font);
     opponentLabelText.setFont(font);
     playerScoreText.setFont(font);
@@ -44,33 +45,35 @@ Play::Play(const sf::Font& font)
 
     // Set up "Take your pick" text
     takeYourPickText.setString("Take your pick");
-    takeYourPickText.setCharacterSize(24);
+    takeYourPickText.setCharacterSize(26);
     takeYourPickText.setFillColor(sf::Color::White);
 
     // Position the texts
-    float windowWidth = 800; // Replace with your window width
-    float windowHeight = 800; // Replace with your window height
+    float windowWidth = 800;
+    // float windowHeight = 800;
 
     // Round text at the top center
-    roundText.setPosition((windowWidth - roundText.getLocalBounds().width) / 2, 50);
+    roundText.setPosition(350, 50);
 
     // Player label on the left
     playerLabelText.setString("Your Score");
+    playerLabelText.setCharacterSize(30);
     playerLabelText.setPosition(50, 150);
 
     // Opponent label on the right
-    opponentLabelText.setString("Opponent's Score");
-    opponentLabelText.setPosition(windowWidth - opponentLabelText.getLocalBounds().width - 50, 150);
+    opponentLabelText.setString("Computer's Score");
+    opponentLabelText.setCharacterSize(30);
+    opponentLabelText.setPosition(windowWidth - opponentLabelText.getLocalBounds().width - 200, 150);
 
     // Player and opponent scores in the middle, below the round text
-    playerScoreText.setPosition((windowWidth / 2) - 100, 200);
-    opponentScoreText.setPosition((windowWidth / 2) + 50, 200);
+    playerScoreText.setPosition((windowWidth / 2) - 200, 150);
+    opponentScoreText.setPosition((windowWidth / 2) + 150, 150);
 
     // Result text below the scores
-    resultText.setPosition((windowWidth - resultText.getLocalBounds().width) / 2, 300);
+    resultText.setPosition(350, 300);
 
-    // Position "Take your pick" text underneath the images
-    takeYourPickText.setPosition((windowWidth - takeYourPickText.getLocalBounds().width) / 2, startY + imageSize + 20);
+    // Position the text underneath the images
+    takeYourPickText.setPosition((windowWidth - takeYourPickText.getLocalBounds().width) / 4, startY + imageSize + 20);
 
     updateTexts();
 }
@@ -109,7 +112,7 @@ void Play::draw(sf::RenderWindow& window) const {
     window.draw(scissorsSprite);
 
     // Draw "Take your pick" text
-    window.draw(takeYourPickText); // Ensure this is called
+    window.draw(takeYourPickText);
 }
 
 void Play::reset() {
@@ -137,8 +140,8 @@ void Play::determineWinner(int playerChoice, int opponentChoice) {
 
     if (currentRound > 3) {
         // End of game logic
-        resultText.setString("Game Over! Final Score - You: " + std::to_string(playerScore) +
-                             " Opponent: " + std::to_string(opponentScore));
+        resultText.setString("Game Over! \nFinal Score: \nYou: " + std::to_string(playerScore) +
+                             " - Computer: " + std::to_string(opponentScore));
         reset();
     }
 }

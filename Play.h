@@ -22,7 +22,7 @@ private:
     sf::Text playerScoreText;
     sf::Text opponentScoreText;
     sf::Text resultText;
-    sf::Text takeYourPickText; // Add this
+    sf::Text takeYourPickText;
 
     sf::Texture rockTexture;
     sf::Texture paperTexture;
