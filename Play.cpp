@@ -4,7 +4,7 @@
 
 Play::Play(const sf::Font& font)
         : font(font), playerScore(0), opponentScore(0), currentRound(1),
-          backToMenuButton("Back to Menu", font, sf::Vector2f(50, 700), sf::Vector2f(200, 50)),
+          backToMenuButton("Back", font, sf::Vector2f(50, 700), sf::Vector2f(150, 50)),
           quitButton("Quit", font, sf::Vector2f(600, 700), sf::Vector2f(150, 50)),
           onGameOver(nullptr) { // Initialize onGameOver to nullptr
     // Seed the random number generator with the current time
