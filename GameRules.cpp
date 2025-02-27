@@ -1,15 +1,15 @@
 #include "GameRules.h"
 
 GameRules::GameRules(const sf::Font& font)
-        : backButton("Back to Menu", font, sf::Vector2f(300, 600), sf::Vector2f(200, 50)) {
+        : backButton("Back", font, sf::Vector2f(120, 700), sf::Vector2f(100, 50)) {
     // Load the background image
-    if (!backgroundTexture.loadFromFile("../assets/rules_background.jpg")) {
+    if (!backgroundTexture.loadFromFile("../assets/rules.png")) {
         throw std::runtime_error("Failed to load rules background image!");
     }
     backgroundSprite.setTexture(backgroundTexture);
 
     // Resize the background image to make it smaller
-    float scaleFactor = 0.1f; // Adjust this value to make the image smaller or larger
+    float scaleFactor = 0.6f;
     backgroundSprite.setScale(scaleFactor, scaleFactor);
 
     // Position the background image at the top of the screen
@@ -21,20 +21,18 @@ GameRules::GameRules(const sf::Font& font)
     rulesText.setFont(font);
     rulesText.setString(
             "The rules are pretty straightforward.\n"
-            "Players deliver hand signals representing rock, paper, or scissors,\n"
-            "with the outcome determined by these three rules:\n"
             "\n"
             "1. Rock wins against scissors.\n"
             "2. Scissors win against paper.\n"
             "3. Paper wins against rock. \n"
     );
-    rulesText.setCharacterSize(26);
+    rulesText.setCharacterSize(30);
     rulesText.setFillColor(sf::Color::White);
 
     // Center the "Rules" text on the screen
     sf::FloatRect textBounds = rulesText.getLocalBounds();
     rulesText.setOrigin(textBounds.width / 2, textBounds.height / 2);
-    rulesText.setPosition(120, 300); //
+    rulesText.setPosition(120, 480); //
 }
 
 void GameRules::handleEvent(const sf::Event& event, const sf::RenderWindow& window) {
