@@ -36,12 +36,6 @@ About::About(const sf::Font& font)
     sf::FloatRect textBounds = aboutText.getLocalBounds();
     aboutText.setOrigin(textBounds.width / 2, textBounds.height / 2);
     aboutText.setPosition(200, 250); // Center of window
-    /*
-    // Position the text below the background image
-    float textX = (windowWidth - aboutText.getLocalBounds().width) / 2;
-    float textY = backgroundSprite.getPosition().y + backgroundSprite.getGlobalBounds().height + 20; // 20 pixels below the image
-    aboutText.setPosition(textX, textY);
-     */
 }
 
 void About::handleEvent(const sf::Event& event, const sf::RenderWindow& window) {

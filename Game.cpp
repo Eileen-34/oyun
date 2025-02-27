@@ -10,7 +10,7 @@ Game::Game()
           gameOver(font),
           currentState(GameState::Menu) {
     // Load background image
-    if (!backgroundTexture.loadFromFile("../assets/background.jpg")) {
+    if (!backgroundTexture.loadFromFile("../assets/game_background.jpg")) {
         throw std::runtime_error("Failed to load background image!");
     }
     backgroundSprite.setTexture(backgroundTexture);

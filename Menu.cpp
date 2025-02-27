@@ -46,7 +46,3 @@ void Menu::setOnAboutClicked(std::function<void()> onClick) {
 void Menu::setOnExitClicked(std::function<void()> onClick) {
     buttons[4].setOnClick(onClick);
 }
-
-// https://wrpsa.com/the-official-rules-of-rock-paper-scissors/
-// https://www.rpsgame.org/random
-// https://www.twoplayergames.org/game/rock-paper-scissors
