@@ -67,7 +67,7 @@ void Game::handleEvents() {
     sf::Event event{};
     while (window.pollEvent(event)) {
         // Close the window if the X button is clicked
-        if (event.type == sf::Event::Closed) { /// TODO oder event->is<Event::Closed>())
+        if (event.type == sf::Event::Closed) {
             window.close();
         }
         // Close the window if the Esc key is pressed (only if the window wasn't already closed)
@@ -75,12 +75,6 @@ void Game::handleEvents() {
             window.close();
         }
     }
-
-        //else if (event->is<Event::KeyPressed>()) {
-        //  if (keyPressed->scanCode == Keyboard::Scancode::Escape) {
-        //  window.close();
-        //  }
-        // }
 
         // Handle events based on the current state
         switch (currentState) {
