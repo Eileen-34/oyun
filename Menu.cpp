@@ -4,7 +4,7 @@ Menu::Menu(const sf::Font& font) {
     // Create buttons
     buttons.emplace_back("Play", font, sf::Vector2f(300, 300), sf::Vector2f(200, 50));      ///DONE
     buttons.emplace_back("Scores", font, sf::Vector2f(300, 400), sf::Vector2f(200, 50));   ///TODO
-    buttons.emplace_back("Game Rules", font, sf::Vector2f(300, 500), sf::Vector2f(200, 50)); ///DONE
+    buttons.emplace_back("Rules", font, sf::Vector2f(300, 500), sf::Vector2f(200, 50)); ///DONE
     buttons.emplace_back("About", font, sf::Vector2f(300, 600), sf::Vector2f(200, 50));      ///DONE
     buttons.emplace_back("Exit", font, sf::Vector2f(300, 700), sf::Vector2f(200, 50));       ///DONE
 }
