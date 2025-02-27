@@ -445,3 +445,4 @@ void Play::setOnBackToMenuClicked(std::function<void()> onClick) {
 void Play::setOnQuitClicked(std::function<void()> onClick) {
     quitButton.setOnClick(onClick);
 }
+///TODO implement scores page.
