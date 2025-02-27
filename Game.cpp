@@ -10,7 +10,7 @@ Game::Game()
           gameOver(font),
           currentState(GameState::Menu) {
     // Load background image
-    if (!backgroundTexture.loadFromFile("../assets/bigger+logo.jpg")) {
+    if (!backgroundTexture.loadFromFile("../assets/background.jpg")) {
         throw std::runtime_error("Failed to load background image!");
     }
     backgroundSprite.setTexture(backgroundTexture);
@@ -18,7 +18,7 @@ Game::Game()
     // Center the background image at the top
     float windowWidth = window.getSize().x;
     float backgroundWidth = backgroundSprite.getLocalBounds().width;
-    backgroundSprite.setPosition((windowWidth - backgroundWidth) / 2, 0);
+    backgroundSprite.setPosition((windowWidth - backgroundWidth) / 2, -130);
 
     // Load font
     if (!font.loadFromFile("assets/KenneyHighSquare.ttf")) {
@@ -66,9 +66,16 @@ void Game::run() {
 void Game::handleEvents() {
     sf::Event event{};
     while (window.pollEvent(event)) {
+        // Close the window if the X button is clicked
         if (event.type == sf::Event::Closed) { /// TODO oder event->is<Event::Closed>())
             window.close();
         }
+        // Close the window if the Esc key is pressed (only if the window wasn't already closed)
+        else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
+            window.close();
+        }
+    }
+
         //else if (event->is<Event::KeyPressed>()) {
         //  if (keyPressed->scanCode == Keyboard::Scancode::Escape) {
         //  window.close();
@@ -96,7 +103,7 @@ void Game::handleEvents() {
                 break;
         }
     }
-}
+
 
 void Game::update() {
     // Update based on the current state
