@@ -17,6 +17,9 @@ public:
     void setOnBackToMenuClicked(std::function<void()> onClick);
     void setOnQuitClicked(std::function<void()> onClick);
 
+    //A method to set a callback for when the game is over.
+    void setOnGameOver(std::function<void(int playerScore, int opponentScore)> onGameOver);
+
 private:
     sf::Font font;
     sf::Text roundText;
@@ -43,8 +46,11 @@ private:
     int opponentScore;
     int currentRound;
 
+private:
     void determineWinner(int playerChoice, int opponentChoice);
     void updateTexts();
+
+    std::function<void(int playerScore, int opponentScore)> onGameOver; // Declare onGameOver
 };
 
 #endif //OYUN_PLAY_H

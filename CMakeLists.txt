@@ -18,6 +18,8 @@ add_executable(oyun main.cpp
         GameRules.cpp
         Play.h
         Play.cpp
+        GameOver.h
+        GameOver.cpp
 )
 
 # Link SFML libraries

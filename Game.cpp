@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "GameOver.h"
 
 Game::Game()
         : window(sf::VideoMode(800, 800), "Rock Paper Scissors Game"),
@@ -6,7 +7,7 @@ Game::Game()
           play(font),
           gameRules(font),
           about(font),
-
+          gameOver(font),
           currentState(GameState::Menu) {
     // Load background image
     if (!backgroundTexture.loadFromFile("../assets/bigger+logo.jpg")) {
@@ -39,6 +40,19 @@ Game::Game()
     gameRules.setOnBackClicked([this]() { currentState = GameState::Menu; }); // Switch back to Menu
     // Set up the "Back to Menu" button callback in the About page
     about.setOnBackClicked([this]() { currentState = GameState::Menu; }); // Switch back to Menu
+
+    // Set up GameOver page button callbacks
+    gameOver.setOnYesClicked([this]() {
+        play.reset(); // Reset the Play state
+        currentState = GameState::Play; // Switch to Play state
+    });
+    gameOver.setOnNoClicked([this]() { window.close(); });
+
+    // Set up Play's game over callback
+    play.setOnGameOver([this](int playerScore, int opponentScore) {
+        gameOver.setFinalScore(playerScore, opponentScore); // Set final score
+        currentState = GameState::GameOver; // Switch to GameOver state
+    });
 }
 
 void Game::run() {
@@ -75,6 +89,9 @@ void Game::handleEvents() {
             case GameState::About:
                 about.handleEvent(event, window);
                 break;
+            case GameState::GameOver:
+                gameOver.handleEvent(event, window);
+                break;
             default:
                 break;
         }
@@ -98,6 +115,9 @@ void Game::update() {
             break;
         case GameState::Exit:
             window.close();
+            break;
+        case GameState::GameOver:
+            gameOver.update(window);
             break;
         default:
             break;
@@ -125,6 +145,9 @@ void Game::render() {
             break;
         case GameState::About:
             about.draw(window);
+            break;
+        case GameState::GameOver:
+            gameOver.draw(window);
             break;
         default:
             break;

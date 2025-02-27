@@ -2,13 +2,11 @@
 #include <cstdlib>
 #include <ctime>
 
-Play::Play(const sf::Font& font):
-font(font),
-playerScore(0),
-opponentScore(0),
-currentRound(1),
-backToMenuButton("Back to Menu",font,sf::Vector2f(50, 700),sf::Vector2f(200, 50)),
-quitButton("Quit", font, sf::Vector2f(600, 700), sf::Vector2f(150, 50)) {
+Play::Play(const sf::Font& font)
+        : font(font), playerScore(0), opponentScore(0), currentRound(1),
+          backToMenuButton("Back to Menu", font, sf::Vector2f(50, 700), sf::Vector2f(200, 50)),
+          quitButton("Quit", font, sf::Vector2f(600, 700), sf::Vector2f(150, 50)),
+          onGameOver(nullptr) { // Initialize onGameOver to nullptr
     // Seed the random number generator with the current time
     std::srand(std::time(0));
 
@@ -67,7 +65,6 @@ quitButton("Quit", font, sf::Vector2f(600, 700), sf::Vector2f(150, 50)) {
 
     // Position the texts
     float windowWidth = 800;
-    // float windowHeight = 800;
 
     // Round text at the top center
     roundText.setPosition(350, 50);
@@ -109,6 +106,7 @@ void Play::handleEvent(const sf::Event& event, const sf::RenderWindow& window) {
             int opponentChoice = rand() % 3;
             determineWinner(2, opponentChoice);
         }
+
         // Handle button clicks
         backToMenuButton.handleEvent(event, window);
         quitButton.handleEvent(event, window);
@@ -149,9 +147,11 @@ void Play::reset() {
     opponentScore = 0;
     currentRound = 1;
 
+    // Clear choice texts and result text
     playerChoiceText.setString("");
     opponentChoiceText.setString("");
     resultText.setString("");
+
     updateTexts();
 }
 
@@ -174,6 +174,7 @@ void Play::determineWinner(int playerChoice, int opponentChoice) {
     playerChoiceText.setString("Your choice: \n" + playerChoiceStr);
     opponentChoiceText.setString("Computer's choice: \n" + computerChoiceStr);
 
+    // Determine the winner
     if (playerChoice == opponentChoice) {
         resultText.setString("It is a tie!");
     } else if ((playerChoice == 0 && opponentChoice == 2) ||
@@ -190,11 +191,15 @@ void Play::determineWinner(int playerChoice, int opponentChoice) {
     updateTexts();
 
     if (currentRound > 3) {
-        // End of game logic
-        resultText.setString("Game Over! \nFinal Score: \nYou: " + std::to_string(playerScore) +
-                             " - Computer: " + std::to_string(opponentScore));
-        reset();
+        // Trigger game over callback
+        if (onGameOver) { // Check if onGameOver is set
+            onGameOver(playerScore, opponentScore);
+        }
     }
+}
+
+void Play::setOnGameOver(std::function<void(int playerScore, int opponentScore)> onGameOver) {
+    this->onGameOver = onGameOver;
 }
 
 void Play::updateTexts() {
