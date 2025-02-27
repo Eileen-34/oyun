@@ -3,7 +3,7 @@
 GameOver::GameOver(const sf::Font& font)
         : gameOverText("Game Over!", font, 40),
           finalScoreText("", font, 30),
-          promptText("Another game?", font, 30),
+          promptText("Would you like to play another round?", font, 30),
           yesButton("Yes", font, sf::Vector2f(300, 400), sf::Vector2f(100, 50)),
           noButton("No", font, sf::Vector2f(450, 400), sf::Vector2f(100, 50)) {
     gameOverText.setFillColor(sf::Color::White);

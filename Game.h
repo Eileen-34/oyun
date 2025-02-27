@@ -6,6 +6,7 @@
 #include "About.h"
 #include "GameRules.h"
 #include "Play.h"
+#include "GameOver.h"
 
 class Game {
 public:
@@ -25,6 +26,7 @@ private:
     Play play;
     GameRules gameRules;
     About about;
+    GameOver gameOver;
 
     enum class GameState {
         Menu,
@@ -32,8 +34,10 @@ private:
         Scores,
         Rules,
         About,
-        Exit
+        Exit,
+        GameOver
     } currentState;
+
 };
 
 #endif //OYUN_GAME_H
