@@ -1,11 +1,11 @@
 #include "GameOver.h"
 
 GameOver::GameOver(const sf::Font& font)
-        : gameOverText("Game Over!", font, 40),
+        : gameOverText("Game Over\n\n", font, 50),
           finalScoreText("", font, 30),
-          promptText("Would you like to play another round?", font, 30),
-          yesButton("Yes", font, sf::Vector2f(300, 400), sf::Vector2f(100, 50)),
-          noButton("No", font, sf::Vector2f(450, 400), sf::Vector2f(100, 50)) {
+          promptText("\n\nWhat a game! \n\nWould you like to play again?", font, 30),
+          yesButton("Yes", font, sf::Vector2f(300, 450), sf::Vector2f(100, 50)),
+          noButton("No", font, sf::Vector2f(450, 450), sf::Vector2f(100, 50)) {
     gameOverText.setFillColor(sf::Color::White);
     finalScoreText.setFillColor(sf::Color::White);
     promptText.setFillColor(sf::Color::White);
@@ -16,7 +16,7 @@ GameOver::GameOver(const sf::Font& font)
 }
 
 void GameOver::setFinalScore(int playerScore, int opponentScore) {
-    finalScoreText.setString("Final Score: \nYou: " + std::to_string(playerScore) +
+    finalScoreText.setString("\n\nFinal Score: \nYou: " + std::to_string(playerScore) +
                              " - Computer: " + std::to_string(opponentScore));
 }
 

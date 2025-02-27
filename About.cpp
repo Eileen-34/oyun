@@ -20,7 +20,7 @@ About::About(const sf::Font& font)
     // Set up the "About" text
     aboutText.setFont(font);
     aboutText.setString(
-            "\n\nAbout the Game"
+            "\n\nAbout the Game:"
             "\n\nThis game was developed by Aylin Oymak "
             "\nas a project submission for "
             "\n'Programming in C++' course taught"
