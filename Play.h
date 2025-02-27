@@ -46,6 +46,11 @@ private:
     int opponentScore;
     int currentRound;
 
+    // Timer and delay flag
+    sf::Clock gameOverTimer; // Timer to track the delay
+    bool isGameOverDelay;    // Flag to indicate if the delay is active
+    float gameOverDelayDuration; // Duration of the delay in seconds
+
 private:
     void determineWinner(int playerChoice, int opponentChoice);
     void updateTexts();
