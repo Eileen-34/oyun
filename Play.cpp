@@ -8,7 +8,7 @@ Play::Play(const sf::Font& font)
           quitButton("Quit", font, sf::Vector2f(600, 700), sf::Vector2f(150, 50)),
           onGameOver(nullptr) { // Initialize onGameOver to nullptr
     // Seed the random number generator with the current time
-    std::srand(std::time(0));
+    std::srand(std::time(nullptr));
 
     // Load textures for rock, paper, scissors
     if (!rockTexture.loadFromFile("../assets/rock.png") ||
@@ -22,7 +22,7 @@ Play::Play(const sf::Font& font)
     paperSprite.setTexture(paperTexture);
     scissorsSprite.setTexture(scissorsTexture);
 
-    // Resize images to the same size (e.g., 100x100)
+    // Resize images to the same size (100x100)
     float imageSize = 100.0f;
     rockSprite.setScale(imageSize / rockTexture.getSize().x, imageSize / rockTexture.getSize().y);
     paperSprite.setScale(imageSize / paperTexture.getSize().x, imageSize / paperTexture.getSize().y);
@@ -38,7 +38,7 @@ Play::Play(const sf::Font& font)
 
     // Initialize texts
     roundText.setFont(font);
-    roundText.setCharacterSize(40);
+    roundText.setCharacterSize(50);
     playerLabelText.setFont(font);
     opponentLabelText.setFont(font);
     playerScoreText.setFont(font);
@@ -46,12 +46,12 @@ Play::Play(const sf::Font& font)
 
     // Initialize choice texts
     playerChoiceText.setFont(font);
-    playerChoiceText.setCharacterSize(24);
+    playerChoiceText.setCharacterSize(28);
     playerChoiceText.setFillColor(sf::Color::White);
     playerChoiceText.setPosition(50, 250);
 
     opponentChoiceText.setFont(font);
-    opponentChoiceText.setCharacterSize(24);
+    opponentChoiceText.setCharacterSize(28);
     opponentChoiceText.setFillColor(sf::Color::White);
     opponentChoiceText.setPosition(600, 250);
 
@@ -190,7 +190,7 @@ void Play::determineWinner(int playerChoice, int opponentChoice) {
     currentRound++;
     updateTexts();
 
-    if (currentRound > 3) {
+    if (currentRound > 5) {
         // Trigger game over callback
         if (onGameOver) { // Check if onGameOver is set
             onGameOver(playerScore, opponentScore);
