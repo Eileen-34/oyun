@@ -6,7 +6,7 @@ Button::Button(
         const sf::Vector2f& position,
         const sf::Vector2f& size)
         : defaultColor(sf::Color(51, 51, 51, 200)),
-          hoverColor(sf::Color(76, 175, 80, 200)) {
+          hoverColor(sf::Color(204, 204, 0, 200)) {
     // Set up the button shape
     shape.setSize(size);
     shape.setPosition(position);
