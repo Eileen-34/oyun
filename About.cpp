@@ -1,7 +1,7 @@
 #include "About.h"
 
 About::About(const sf::Font& font)
-        : backButton("Back to Menu", font, sf::Vector2f(300, 600), sf::Vector2f(200, 50)) {
+        : backButton("Back", font, sf::Vector2f(200, 700), sf::Vector2f(100, 50)) {
     // Load the background image
     if (!backgroundTexture.loadFromFile("../assets/about_background.jpg")) {
         throw std::runtime_error("Failed to load about background image!");
@@ -21,15 +21,15 @@ About::About(const sf::Font& font)
     aboutText.setFont(font);
     aboutText.setString(
             "\n\nAbout the Game"
-            "\n\nThis game is developed by Aylin Oymak as a project "
-            "\nsubmission for 'Programming in C++' taught by David "
-            "\nHackbarth in summer term 2025 "
+            "\n\nThis game was developed by Aylin Oymak "
+            "\nas a project submission for "
+            "\n'Programming in C++' course taught"
+            "\nby David Hackbarth in summer term 2025 "
             "\nat Berlin School of Economics and Law. "
             "\n\nIt is meant for educational purposes only. "
-            "\nPlease do not rely on it."
             "\n\n\n Have fun!"
     );
-    aboutText.setCharacterSize(26);
+    aboutText.setCharacterSize(30);
     aboutText.setFillColor(sf::Color::White);
 
     // Center the "About" text on the screen
