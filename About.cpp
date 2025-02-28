@@ -3,7 +3,7 @@
 About::About(const sf::Font& font)
         : backButton("Back", font, sf::Vector2f(200, 700), sf::Vector2f(100, 50)) {
     // Load the background image
-    if (!backgroundTexture.loadFromFile("../assets/about_background.jpg")) {
+    if (!backgroundTexture.loadFromFile("/Users/03oymaka19/CLionProjects/oyun/assets/about_background.jpg")) {
         throw std::runtime_error("Failed to load about background image!");
     }
     backgroundSprite.setTexture(backgroundTexture);
