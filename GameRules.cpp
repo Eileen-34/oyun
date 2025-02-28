@@ -3,7 +3,7 @@
 GameRules::GameRules(const sf::Font& font)
         : backButton("Back", font, sf::Vector2f(120, 700), sf::Vector2f(100, 50)) {
     // Load the background image
-    if (!backgroundTexture.loadFromFile("../assets/rules.png")) {
+    if (!backgroundTexture.loadFromFile("assets/rules.png")) {
         throw std::runtime_error("Failed to load rules background image!");
     }
     backgroundSprite.setTexture(backgroundTexture);
