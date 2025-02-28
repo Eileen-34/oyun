@@ -228,9 +228,9 @@ Play::Play(const sf::Font& font)
     std::srand(std::time(nullptr));
 
     // Load textures for rock, paper, scissors
-    if (!rockTexture.loadFromFile("../assets/rock.png") ||
-        !paperTexture.loadFromFile("../assets/paper.png") ||
-        !scissorsTexture.loadFromFile("../assets/scissors.png")) {
+    if (!rockTexture.loadFromFile("assets/rock.png") ||
+        !paperTexture.loadFromFile("assets/paper.png") ||
+        !scissorsTexture.loadFromFile("assets/scissors.png")) {
         throw std::runtime_error("Failed to load images!");
     }
 

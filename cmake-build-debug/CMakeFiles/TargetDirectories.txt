@@ -1,3 +1,0 @@
-/Users/03oymaka19/CLionProjects/oyun/cmake-build-debug/CMakeFiles/oyun.dir
-/Users/03oymaka19/CLionProjects/oyun/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/03oymaka19/CLionProjects/oyun/cmake-build-debug/CMakeFiles/rebuild_cache.dir
