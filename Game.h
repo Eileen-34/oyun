@@ -31,7 +31,7 @@ private:
     enum class GameState {
         Menu,
         Play,
-        Scores,
+        //Scores,
         Rules,
         About,
         Exit,
