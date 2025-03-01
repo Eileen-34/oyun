@@ -9,6 +9,8 @@
 #include "Play.h"
 #include "GameOver.h"
 
+using namespace sf;
+
 class Game {
 public:
     Game();
@@ -19,10 +21,10 @@ private:
     void update();
     void render();
 
-    sf::RenderWindow window;
-    sf::Texture backgroundTexture;
-    sf::Sprite backgroundSprite;
-    sf::Font font;
+    RenderWindow window;
+    Texture backgroundTexture;
+    Sprite backgroundSprite;
+    Font font;
     Menu menu;
     Play play;
     GameRules gameRules;
