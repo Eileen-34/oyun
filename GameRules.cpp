@@ -35,7 +35,7 @@ GameRules::GameRules(const sf::Font& font)
             "1. Rock wins against scissors.\n"
             "2. Paper wins against rock.\n"
             "3. Scissors win against paper.\n"
-            "4. Round: Each game consists of five rounds.\n"
+            "4. Round: Each game consists of six rounds.\n"
             "5. Scoring:\n"
             "- If it is a tie, neither player scores a point.\n"
             "- Otherwise, the winner of each round earns one point."
