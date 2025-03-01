@@ -2,9 +2,11 @@
 #include "GameRules.h"
 #include "rules.h" // Byte array for rules.png
 
+using namespace sf;
+
 // Constructor
-GameRules::GameRules(const sf::Font& font)
-        : backButton("Back", font, sf::Vector2f(120, 700), sf::Vector2f(100, 50)) {
+GameRules::GameRules(const Font& font)
+        : backButton("Back", font, Vector2f(120, 700), Vector2f(100, 50)) {
     // Load the background image from memory
     if (!backgroundTexture.loadFromMemory(assets_rules_png, assets_rules_png_len)) {
         throw std::runtime_error("Failed to load rules background image from memory!");
@@ -44,20 +46,20 @@ GameRules::GameRules(const sf::Font& font)
     rulesText.setFillColor(sf::Color::White);
 
     // Centers the "Rules" text on the screen
-    sf::FloatRect textBounds = rulesText.getLocalBounds();
+    FloatRect textBounds = rulesText.getLocalBounds();
     rulesText.setOrigin(textBounds.width / 2, textBounds.height / 2);
     rulesText.setPosition(120, 460); //
 }
 
-void GameRules::handleEvent(const sf::Event& event, const sf::RenderWindow& window) {
+void GameRules::handleEvent(const Event& event, const RenderWindow& window) {
     backButton.handleEvent(event, window);
 }
 
-void GameRules::update(const sf::RenderWindow& window) {
+void GameRules::update(const RenderWindow& window) {
     backButton.update(window);
 }
 
-void GameRules::draw(sf::RenderWindow& window) const {
+void GameRules::draw(RenderWindow& window) const {
     // Draws the background
     window.draw(backgroundSprite);
 
