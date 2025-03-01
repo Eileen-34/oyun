@@ -22,13 +22,15 @@ To build and run this game on macOS, you need the following:
 - **macOS**: Tested on macOS Sequoia (15.2).
 - **CLion**: JetBrains IDE for C++ development.
 - **CMake**: Build system (version 3.26 or higher).
-- **SFML**: Multimedia library (version 2.6.2).
+- **SFML**: Simple and Fast Multimedia library (version 2.6.2).
 
 ---
 
 ## Installation
 1. **Install Dependencies**:
+
     - Install SFML using Homebrew:
+   
       ```bash
       brew install sfml@2.6.2
       ```
@@ -40,12 +42,22 @@ To build and run this game on macOS, you need the following:
    ```
 
 3. **Build the Game**:
-    - Open the project in CLion and build it using the provided `CMakeLists.txt`.
-    - Alternatively, build from the terminal:
-      ```bash
+   --> **Option 1: Using CLion**
+   1. Open the project in CLion. 
+   2. Reload the CMake project:
+   - Go to File > Reload CMake Project. 
+   3. Build the project:
+   - Go to Build > Build Project.
+   4. The executable (i.e. oyun) will be generated in the cmake-build-debug folder.
+
+--> **Option 2: Using the terminal**
+
+   ```bash
       cmake -S . -B build
       cmake --build build
-      ```
+   ```
+
+The executable (oyun) will be generated in the build folder.
 
 ---
 
@@ -101,34 +113,32 @@ To build and run this game on macOS, you need the following:
 ```
 oyun/
 ├── assets/
-├── build                   
 ├── cmake-build-debug/       # Build directory (contains the executable)
-├── .gitignore                 
-├── About.cpp
-├── About.h
-├── about_background.h
-├── Button.cpp
-├── Button.h
+├── .gitignore               # Specifies files to ignore in Git  
+├── About.cpp                # Implementation of the About page
+├── About.h                  # Header file for the About page
+├── about_background.h       # Background image for the About page (converted to hex code)
+├── Button.cpp               # Implementation of the Button class
+├── Button.h                 # Header file for the Button class
 ├── CMakeLists.txt           # CMake build configuration
-├── Game.cpp
-├── Game.h
-├── game_background.h
-├── GameOver.cpp
-├── GameOver.h
-├── GameRules.cpp
-├── GameRules.h
-├── Play.h
-├── KenneyHighSquare.h
-├── main.cpp                  
-├── Menu.cpp
-├── Menu.h
-├── paper.h
-├── Play.cpp
-├── Play.h
+├── Game.cpp                 # Implementation of the Game class
+├── Game.h                   # Header file for the Game class
+├── game_background.h        # Background image for the game (converted to hex code)
+├── GameOver.cpp             # Implementation of the Game Over screen
+├── GameOver.h               # Header file for the Game Over screen
+├── GameRules.cpp            # Implementation of the Game Rules page
+├── GameRules.h              # Header file for the Game Rules page
+├── KenneyHighSquare.h       # Font file (Kenney High Square) converted to hex code
+├── main.cpp                 # Entry point of the game
+├── Menu.cpp                 # Implementation of the Main Menu
+├── Menu.h                   # Header file for the Main Menu
+├── paper.h                  # Paper image (converted to hex code)
+├── Play.cpp                 # Implementation of the Play screen
+├── Play.h                   # Header file for the Play screen
 ├── README.md 
-├── rock.h
-├── rules.h
-├── scissors.h       
+├── rock.h                   # Rock image (converted to hex code)
+├── rules.h                  # Rules image (converted to hex code)
+├── scissors.h               # Scissors image (converted to hex code)
                
 ```
 ---
@@ -136,5 +146,6 @@ oyun/
 ## Contact
 For questions or feedback, feel free to reach out:
 - **GitHub**: [Eileen_Aylin](https://github.com/Eileen-34)
+- **E-Mail**: [s_oymak23@stud.hwr-berlin.de](s_oymak23@stud.hwr-berlin.de)
 
 ---
