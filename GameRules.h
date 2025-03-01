@@ -1,6 +1,7 @@
 #ifndef OYUN_GAMERULES_H
 #define OYUN_GAMERULES_H
 
+#pragma once
 #include <SFML/Graphics.hpp>
 #include "Button.h"
 
