@@ -1,6 +1,7 @@
 #ifndef OYUN_MENU_H
 #define OYUN_MENU_H
 
+#pragma once
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "Button.h"
@@ -14,7 +15,6 @@ public:
     void draw(sf::RenderWindow& window) const;
 
     void setOnPlayClicked(std::function<void()> onClick);
-    void setOnScoresClicked(std::function<void()> onClick);
     void setOnRulesClicked(std::function<void()> onClick);
     void setOnAboutClicked(std::function<void()> onClick);
     void setOnExitClicked(std::function<void()> onClick);
