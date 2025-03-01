@@ -19,7 +19,7 @@ Game::Game()
     backgroundSprite.setTexture(backgroundTexture);
 
     /*
-    // Load background image
+    // Load background image from file
     if (!backgroundTexture.loadFromFile("/Users/03oymaka19/CLionProjects/oyun/assets/game_background.jpg")) {
         throw std::runtime_error("Failed to load background image!");
     }
@@ -36,15 +36,15 @@ Game::Game()
         throw std::runtime_error("Failed to load font from memory!");
     }
     /*
-    // Load font
+    // Load font from file
     if (!font.loadFromFile("/Users/03oymaka19/CLionProjects/oyun/assets/KenneyHighSquare.ttf")) {
         throw std::runtime_error("Failed to load font!");
     }
-     */
+    */
 
     // Set up menu button callbacks
     menu.setOnPlayClicked([this]() { currentState = GameState::Play; play.reset(); }); // Switch to Play page
-    menu.setOnScoresClicked([this]() { currentState = GameState::Scores; });
+    //menu.setOnScoresClicked([this]() { currentState = GameState::Scores; });
     menu.setOnRulesClicked([this]() { currentState = GameState::Rules; });
     menu.setOnAboutClicked([this]() { currentState = GameState::About; });
     menu.setOnExitClicked([this]() { currentState = GameState::Exit; });
