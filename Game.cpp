@@ -10,7 +10,7 @@ Game::Game()
           gameOver(font),
           currentState(GameState::Menu) {
     // Load background image
-    if (!backgroundTexture.loadFromFile("../assets/game_background.jpg")) {
+    if (!backgroundTexture.loadFromFile("/Users/03oymaka19/CLionProjects/oyun/assets/game_background.jpg")) {
         throw std::runtime_error("Failed to load background image!");
     }
     backgroundSprite.setTexture(backgroundTexture);
@@ -21,7 +21,7 @@ Game::Game()
     backgroundSprite.setPosition((windowWidth - backgroundWidth) / 2, -130);
 
     // Load font
-    if (!font.loadFromFile("assets/KenneyHighSquare.ttf")) {
+    if (!font.loadFromFile("/Users/03oymaka19/CLionProjects/oyun/assets/KenneyHighSquare.ttf")) {
         throw std::runtime_error("Failed to load font!");
     }
 
