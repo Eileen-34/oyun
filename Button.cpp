@@ -11,8 +11,8 @@ Button::Button(
     shape.setSize(size);
     shape.setPosition(position);
     shape.setFillColor(defaultColor);
-    shape.setOutlineThickness(2); // Add a subtle outline
-    shape.setOutlineColor(sf::Color::Transparent); // Outline color (can be changed)
+    shape.setOutlineThickness(2); // Add an outline
+    shape.setOutlineColor(sf::Color::Transparent); // Outline color
 
     // Set up the button label
     label.setFont(font);
@@ -59,7 +59,6 @@ void Button::update(const sf::RenderWindow& window) {
         shape.setFillColor(defaultColor);
         shape.setOutlineColor(sf::Color::Transparent); // Remove outline when not hovered
     }
-    // shape.setFillColor(shape.getGlobalBounds().contains(mousePos) ? hoverColor : defaultColor);
 }
 
 void Button::draw(sf::RenderWindow& window) const {
