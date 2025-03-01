@@ -1,3 +1,4 @@
+#pragma once
 #include "Game.h"
 #include "GameOver.h"
 #include "game_background.h" // Byte array for game_background.jpg
