@@ -4,20 +4,22 @@
 #include <SFML/Graphics.hpp>
 #include "Button.h"
 
+using namespace sf;
+
 class About {
 public:
-    About(const sf::Font& font);
+    About(const Font& font);
 
-    void handleEvent(const sf::Event& event, const sf::RenderWindow& window);
-    void update(const sf::RenderWindow& window);
-    void draw(sf::RenderWindow& window) const;
+    void handleEvent(const Event& event, const sf::RenderWindow& window);
+    void update(const RenderWindow& window);
+    void draw(RenderWindow& window) const;
 
     void setOnBackClicked(std::function<void()> onClick);
 
 private:
-    sf::Texture backgroundTexture;
-    sf::Sprite backgroundSprite;
-    sf::Text aboutText;
+    Texture backgroundTexture;
+    Sprite backgroundSprite;
+    Text aboutText;
     Button backButton;
 };
 
