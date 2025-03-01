@@ -1,3 +1,4 @@
+#pragma once
 #include "GameRules.h"
 #include "rules.h" // Byte array for rules.png
 
@@ -23,7 +24,7 @@ GameRules::GameRules(const sf::Font& font)
     backgroundSprite.setScale(scaleFactor, scaleFactor);
 
     // Positions the background image at the top of the screen
-    float windowWidth = 800; // Replace with your window width
+    float windowWidth = 800;
     float imageWidth = backgroundSprite.getGlobalBounds().width;
     backgroundSprite.setPosition((windowWidth - imageWidth) / 2, 20);
 
@@ -32,8 +33,8 @@ GameRules::GameRules(const sf::Font& font)
     rulesText.setString(
             "The rules:\n"
             "1. Rock wins against scissors.\n"
-            "2. Scissors win against paper.\n"
-            "3. Paper wins against rock. \n"
+            "2. Paper wins against rock.\n"
+            "3. Scissors win against paper.\n"
             "4. Round: Each game consists of five rounds.\n"
             "5. Scoring:\n"
             "- If it is a tie, neither player scores a point.\n"
@@ -45,7 +46,7 @@ GameRules::GameRules(const sf::Font& font)
     // Centers the "Rules" text on the screen
     sf::FloatRect textBounds = rulesText.getLocalBounds();
     rulesText.setOrigin(textBounds.width / 2, textBounds.height / 2);
-    rulesText.setPosition(120, 480); //
+    rulesText.setPosition(120, 460); //
 }
 
 void GameRules::handleEvent(const sf::Event& event, const sf::RenderWindow& window) {
