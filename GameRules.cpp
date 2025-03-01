@@ -1,12 +1,21 @@
 #include "GameRules.h"
+#include "rules.h" // Byte array for rules.png
 
 GameRules::GameRules(const sf::Font& font)
         : backButton("Back", font, sf::Vector2f(120, 700), sf::Vector2f(100, 50)) {
+    // Load the background image from memory
+    if (!backgroundTexture.loadFromMemory(assets_rules_png, assets_rules_png_len)) {
+        throw std::runtime_error("Failed to load rules background image from memory!");
+    }
+    backgroundSprite.setTexture(backgroundTexture);
+
+    /*
     // Load the background image
     if (!backgroundTexture.loadFromFile("/Users/03oymaka19/CLionProjects/oyun/assets/rules.png")) {
         throw std::runtime_error("Failed to load rules background image!");
     }
     backgroundSprite.setTexture(backgroundTexture);
+*/
 
     // Resize the background image to make it smaller
     float scaleFactor = 0.6f;

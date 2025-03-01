@@ -1,5 +1,7 @@
 #include "Game.h"
 #include "GameOver.h"
+#include "game_background.h" // Byte array for game_background.jpg
+#include "KenneyHighSquare.h" // Byte array for KenneyHighSquare.ttf
 
 Game::Game()
         : window(sf::VideoMode(800, 800), "Rock Paper Scissors Game"),
@@ -9,21 +11,36 @@ Game::Game()
           about(font),
           gameOver(font),
           currentState(GameState::Menu) {
+
+    // Load background image from memory
+    if (!backgroundTexture.loadFromMemory(assets_game_background_jpg, assets_game_background_jpg_len)) {
+        throw std::runtime_error("Failed to load background image from memory!");
+    }
+    backgroundSprite.setTexture(backgroundTexture);
+
+    /*
     // Load background image
     if (!backgroundTexture.loadFromFile("/Users/03oymaka19/CLionProjects/oyun/assets/game_background.jpg")) {
         throw std::runtime_error("Failed to load background image!");
     }
     backgroundSprite.setTexture(backgroundTexture);
+    */
 
     // Center the background image at the top
     float windowWidth = window.getSize().x;
     float backgroundWidth = backgroundSprite.getLocalBounds().width;
     backgroundSprite.setPosition((windowWidth - backgroundWidth) / 2, -130);
 
+    // Load font from memory
+    if (!font.loadFromMemory(assets_KenneyHighSquare_ttf, assets_KenneyHighSquare_ttf_len)) {
+        throw std::runtime_error("Failed to load font from memory!");
+    }
+    /*
     // Load font
     if (!font.loadFromFile("/Users/03oymaka19/CLionProjects/oyun/assets/KenneyHighSquare.ttf")) {
         throw std::runtime_error("Failed to load font!");
     }
+     */
 
     // Set up menu button callbacks
     menu.setOnPlayClicked([this]() { currentState = GameState::Play; play.reset(); }); // Switch to Play page

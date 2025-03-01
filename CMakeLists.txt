@@ -20,6 +20,13 @@ add_executable(oyun main.cpp
         Play.cpp
         GameOver.h
         GameOver.cpp
+        about_background.h
+        game_background.h
+        KenneyHighSquare.h
+        paper.h
+        rock.h
+        rules.h
+        scissors.h
 )
 
 # Link SFML libraries

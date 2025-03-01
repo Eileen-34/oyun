@@ -1,12 +1,21 @@
 #include "About.h"
+#include "about_background.h" // Byte array for about_background.jpg
 
 About::About(const sf::Font& font)
         : backButton("Back", font, sf::Vector2f(200, 700), sf::Vector2f(100, 50)) {
-    // Load the background image
+    // Load the background image from memory
+    if (!backgroundTexture.loadFromMemory(assets_about_background_jpg, assets_about_background_jpg_len)) {
+        throw std::runtime_error("Failed to load about background image from memory!");
+    }
+    backgroundSprite.setTexture(backgroundTexture);
+
+    /*
+    // Load the background image from file
     if (!backgroundTexture.loadFromFile("/Users/03oymaka19/CLionProjects/oyun/assets/about_background.jpg")) {
         throw std::runtime_error("Failed to load about background image!");
     }
     backgroundSprite.setTexture(backgroundTexture);
+     */
 
     // Resize the background image to make it smaller
     float scaleFactor = 0.5f; // Adjust this value to make the image smaller or larger
