@@ -4,26 +4,28 @@
 #include <SFML/Graphics.hpp>
 #include <functional>
 
+using namespace sf;
+
 class Button {
 public:
     Button(
             const std::string& text,
-            const sf::Font& font,
-            const sf::Vector2f& position,
-            const sf::Vector2f& size);
+            const Font& font,
+            const Vector2f& position,
+            const Vector2f& size);
 
     void setOnClick(std::function<void()> onClick);
-    void handleEvent(const sf::Event& event, const sf::RenderWindow& window);
-    void update(const sf::RenderWindow& window);
-    void draw(sf::RenderWindow& window) const;
+    void handleEvent(const Event& event, const RenderWindow& window);
+    void update(const RenderWindow& window);
+    void draw(RenderWindow& window) const;
 
 private:
     void centerText();
 
-    sf::RectangleShape shape;
-    sf::Text label;
-    sf::Color defaultColor;
-    sf::Color hoverColor;
+    RectangleShape shape;
+    Text label;
+    Color defaultColor;
+    Color hoverColor;
     std::function<void()> onClick;
 };
 

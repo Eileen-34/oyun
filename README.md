@@ -19,7 +19,7 @@ The game is self-contained, meaning all assets are embedded into the executable.
 
 ## Requirements
 To build and run this game on macOS, you need the following:
-- **macOS**: Tested on macOS Sequoia (15.2).
+- **macOS**: Tested on macOS (13.x) and later.
 - **CLion**: JetBrains IDE for C++ development.
 - **CMake**: Build system (version 3.26 or higher).
 - **SFML**: Simple and Fast Multimedia library (version 2.6.2).
@@ -42,6 +42,7 @@ To build and run this game on macOS, you need the following:
    ```
 
 3. **Build the Game**:
+
    --> **Option 1: Using CLion**
    1. Open the project in CLion. 
    2. Reload the CMake project:
@@ -50,7 +51,7 @@ To build and run this game on macOS, you need the following:
    - Go to Build > Build Project.
    4. The executable (i.e. oyun) will be generated in the cmake-build-debug folder.
 
---> **Option 2: Using the terminal**
+   --> **Option 2: Using the terminal**
 
    ```bash
       cmake -S . -B build
@@ -104,7 +105,7 @@ The executable (oyun) will be generated in the build folder.
     - The winner of each round is determined based on the rules of Rock Paper Scissors.
 
 3. **Game Over**:
-    - After 5 rounds, the game ends, and the final score is displayed.
+    - After 6th round, the game ends, and the final score is displayed.
     - Choose to play again or return to the main menu.
 
 ---

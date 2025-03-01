@@ -1,23 +1,34 @@
 #ifndef OYUN_GAMERULES_H
 #define OYUN_GAMERULES_H
 
+#pragma once
 #include <SFML/Graphics.hpp>
 #include "Button.h"
 
+using namespace sf;
+
+// GameRules class represents the "rules" screen of the game
 class GameRules {
 public:
-    explicit GameRules(const sf::Font& font);
+    //Constructor
+    explicit GameRules(const Font& font);
 
-    void handleEvent(const sf::Event& event, const sf::RenderWindow& window);
-    void update(const sf::RenderWindow& window);
-    void draw(sf::RenderWindow& window) const;
+    // Handles user input events (e.g., mouse clicks)
+    void handleEvent(const Event& event, const RenderWindow& window);
 
+    // Updates the state of the "rules" screen (e.g., button states)
+    void update(const RenderWindow& window);
+
+    // Draws the rules screen (background, text, and buttons) to the window
+    void draw(RenderWindow& window) const;
+
+    // Sets the callback function for the "Back" button click
     void setOnBackClicked(std::function<void()> onClick);
 
 private:
-    sf::Texture backgroundTexture;
-    sf::Sprite backgroundSprite;
-    sf::Text rulesText;
+    Texture backgroundTexture;
+    Sprite backgroundSprite;
+    Text rulesText;
     Button backButton;
 };
 
