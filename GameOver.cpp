@@ -1,3 +1,4 @@
+#pragma once
 #include "GameOver.h"
 
 // Constructor: Initializes the GameOver screen with text and buttons
