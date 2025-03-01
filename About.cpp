@@ -2,8 +2,10 @@
 #include "About.h"
 #include "about_background.h" // Byte array for about_background.jpg
 
+using namespace sf;
+
 About::About(const sf::Font& font)
-        : backButton("Back", font, sf::Vector2f(200, 700), sf::Vector2f(100, 50)) {
+        : backButton("Back", font, Vector2f(200, 700), sf::Vector2f(100, 50)) {
     // Load the background image from memory
     if (!backgroundTexture.loadFromMemory(assets_about_background_jpg, assets_about_background_jpg_len)) {
         throw std::runtime_error("Failed to load about background image from memory!");
@@ -18,14 +20,14 @@ About::About(const sf::Font& font)
     backgroundSprite.setTexture(backgroundTexture);
      */
 
-    // Resize the background image to make it smaller
-    float scaleFactor = 0.5f; // Adjust this value to make the image smaller or larger
+    // Resize the background image
+    float scaleFactor = 0.5f;
     backgroundSprite.setScale(scaleFactor, scaleFactor);
 
     // Position the background image at the top of the screen
-    float windowWidth = 800; // Replace with your window width
+    float windowWidth = 800;
     float imageWidth = backgroundSprite.getGlobalBounds().width;
-    backgroundSprite.setPosition((windowWidth - imageWidth) / 2, 20); // 20 pixels from the top
+    backgroundSprite.setPosition((windowWidth - imageWidth) / 2, 20);
 
     // Set up the "About" text
     aboutText.setFont(font);
@@ -40,7 +42,7 @@ About::About(const sf::Font& font)
             "\n\n\n Have fun!"
     );
     aboutText.setCharacterSize(30);
-    aboutText.setFillColor(sf::Color::White);
+    aboutText.setFillColor(Color::White);
 
     // Center the "About" text on the screen
     sf::FloatRect textBounds = aboutText.getLocalBounds();
@@ -48,15 +50,15 @@ About::About(const sf::Font& font)
     aboutText.setPosition(200, 250); // Center of window
 }
 
-void About::handleEvent(const sf::Event& event, const sf::RenderWindow& window) {
+void About::handleEvent(const sf::Event& event, const RenderWindow& window) {
     backButton.handleEvent(event, window);
 }
 
-void About::update(const sf::RenderWindow& window) {
+void About::update(const RenderWindow& window) {
     backButton.update(window);
 }
 
-void About::draw(sf::RenderWindow& window) const {
+void About::draw(RenderWindow& window) const {
     // Draw the background
     window.draw(backgroundSprite);
 
