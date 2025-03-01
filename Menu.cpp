@@ -2,7 +2,7 @@
 #include "Menu.h"
 
 Menu::Menu(const sf::Font& font) {
-    // Create buttons
+    // Constructor for buttons
     buttons.emplace_back("Play", font, sf::Vector2f(300, 300), sf::Vector2f(200, 50));
     buttons.emplace_back("Rules", font, sf::Vector2f(300, 400), sf::Vector2f(200, 50));
     buttons.emplace_back("About", font, sf::Vector2f(300, 500), sf::Vector2f(200, 50));
