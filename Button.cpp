@@ -5,32 +5,22 @@ Button::Button(
         const sf::Font& font,
         const sf::Vector2f& position,
         const sf::Vector2f& size)
-        : defaultColor(sf::Color(70, 70, 70, 200)),
-          hoverColor(sf::Color(100, 100, 100, 200)) {
+        : defaultColor(sf::Color(51, 51, 51, 200)),
+          hoverColor(sf::Color(255, 212, 57, 200)) {
     // Set up the button shape
     shape.setSize(size);
     shape.setPosition(position);
     shape.setFillColor(defaultColor);
+    shape.setOutlineThickness(2); // Add a subtle outline
+    shape.setOutlineColor(sf::Color::Transparent); // Outline color (can be changed)
 
     // Set up the button label
     label.setFont(font);
     label.setString(text);
-    label.setCharacterSize(26);
+    label.setCharacterSize(28);
     label.setFillColor(sf::Color::White);
 
     centerText();
-    /*
-    // Center the text in the button
-    sf::FloatRect textBounds = label.getLocalBounds();
-    float textWidth = textBounds.width;
-    float textHeight = textBounds.height;
-
-    // Calculate the centered position
-    float textX = position.x + (size.x - textWidth) / 2;
-    float textY = position.y + (size.y - textHeight) / 2 - textBounds.top;
-
-    label.setPosition(textX, textY);
-    */
 }
 
 void Button::centerText() {
@@ -62,7 +52,14 @@ void Button::handleEvent(const sf::Event& event, const sf::RenderWindow& window)
 
 void Button::update(const sf::RenderWindow& window) {
     sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-    shape.setFillColor(shape.getGlobalBounds().contains(mousePos) ? hoverColor : defaultColor);
+    if (shape.getGlobalBounds().contains(mousePos)) {
+        shape.setFillColor(hoverColor);
+        shape.setOutlineColor(sf::Color::White); // Highlight outline on hover
+    } else {
+        shape.setFillColor(defaultColor);
+        shape.setOutlineColor(sf::Color::Transparent); // Remove outline when not hovered
+    }
+    // shape.setFillColor(shape.getGlobalBounds().contains(mousePos) ? hoverColor : defaultColor);
 }
 
 void Button::draw(sf::RenderWindow& window) const {

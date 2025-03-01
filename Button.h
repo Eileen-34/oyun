@@ -1,7 +1,3 @@
-//
-// Created by Aylin Oymak on 23.02.25.
-//
-
 #ifndef OYUN_BUTTON_H
 #define OYUN_BUTTON_H
 

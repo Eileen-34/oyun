@@ -1,12 +1,21 @@
 #include "About.h"
+#include "about_background.h" // Byte array for about_background.jpg
 
 About::About(const sf::Font& font)
-        : backButton("Back to Menu", font, sf::Vector2f(300, 600), sf::Vector2f(200, 50)) {
-    // Load the background image
-    if (!backgroundTexture.loadFromFile("../assets/about_background.jpg")) {
+        : backButton("Back", font, sf::Vector2f(200, 700), sf::Vector2f(100, 50)) {
+    // Load the background image from memory
+    if (!backgroundTexture.loadFromMemory(assets_about_background_jpg, assets_about_background_jpg_len)) {
+        throw std::runtime_error("Failed to load about background image from memory!");
+    }
+    backgroundSprite.setTexture(backgroundTexture);
+
+    /*
+    // Load the background image from file
+    if (!backgroundTexture.loadFromFile("/Users/03oymaka19/CLionProjects/oyun/assets/about_background.jpg")) {
         throw std::runtime_error("Failed to load about background image!");
     }
     backgroundSprite.setTexture(backgroundTexture);
+     */
 
     // Resize the background image to make it smaller
     float scaleFactor = 0.5f; // Adjust this value to make the image smaller or larger
@@ -20,28 +29,22 @@ About::About(const sf::Font& font)
     // Set up the "About" text
     aboutText.setFont(font);
     aboutText.setString(
-            "\n\nAbout the Game"
-            "\n\nThis game is developed by Aylin Oymak as a project "
-            "\nsubmission for 'Programming in C++' taught by David "
-            "\nHackbarth in summer term 2025 "
+            "\n\nAbout the Game:"
+            "\n\nThis game was developed by Aylin Oymak "
+            "\nas a project submission for "
+            "\n'Programming in C++' course taught"
+            "\nby David Hackbarth in summer term 2025 "
             "\nat Berlin School of Economics and Law. "
             "\n\nIt is meant for educational purposes only. "
-            "\nPlease do not rely on it."
             "\n\n\n Have fun!"
     );
-    aboutText.setCharacterSize(26);
+    aboutText.setCharacterSize(30);
     aboutText.setFillColor(sf::Color::White);
 
     // Center the "About" text on the screen
     sf::FloatRect textBounds = aboutText.getLocalBounds();
     aboutText.setOrigin(textBounds.width / 2, textBounds.height / 2);
     aboutText.setPosition(200, 250); // Center of window
-    /*
-    // Position the text below the background image
-    float textX = (windowWidth - aboutText.getLocalBounds().width) / 2;
-    float textY = backgroundSprite.getPosition().y + backgroundSprite.getGlobalBounds().height + 20; // 20 pixels below the image
-    aboutText.setPosition(textX, textY);
-     */
 }
 
 void About::handleEvent(const sf::Event& event, const sf::RenderWindow& window) {

@@ -4,6 +4,9 @@
 #include <SFML/Graphics.hpp>
 #include "Menu.h"
 #include "About.h"
+#include "GameRules.h"
+#include "Play.h"
+#include "GameOver.h"
 
 class Game {
 public:
@@ -20,14 +23,21 @@ private:
     sf::Sprite backgroundSprite;
     sf::Font font;
     Menu menu;
+    Play play;
+    GameRules gameRules;
     About about;
+    GameOver gameOver;
+
     enum class GameState {
         Menu,
         Play,
         Scores,
         Rules,
         About,
-        Exit } currentState;
+        Exit,
+        GameOver
+    } currentState;
+
 };
 
 #endif //OYUN_GAME_H
