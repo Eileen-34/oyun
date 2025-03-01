@@ -1,11 +1,14 @@
 #pragma once
+
 #include "Game.h"
 #include "GameOver.h"
 #include "game_background.h" // Byte array for game_background.jpg
 #include "KenneyHighSquare.h" // Byte array for KenneyHighSquare.ttf
 
+using namespace sf;
+
 Game::Game()
-        : window(sf::VideoMode(800, 800), "Rock Paper Scissors Game"),
+        : window(VideoMode(800, 800), "Rock Paper Scissors Game"),
           menu(font),
           play(font),
           gameRules(font),
@@ -44,8 +47,7 @@ Game::Game()
     */
 
     // Set up menu button callbacks
-    menu.setOnPlayClicked([this]() { currentState = GameState::Play; play.reset(); }); // Switch to Play page
-    //menu.setOnScoresClicked([this]() { currentState = GameState::Scores; });
+    menu.setOnPlayClicked([this]() { currentState = GameState::Play; play.reset(); });
     menu.setOnRulesClicked([this]() { currentState = GameState::Rules; });
     menu.setOnAboutClicked([this]() { currentState = GameState::About; });
     menu.setOnExitClicked([this]() { currentState = GameState::Exit; });
@@ -82,14 +84,14 @@ void Game::run() {
 }
 
 void Game::handleEvents() {
-    sf::Event event{};
+    Event event{};
     while (window.pollEvent(event)) {
         // Close the window if the X button is clicked
-        if (event.type == sf::Event::Closed) {
+        if (event.type == Event::Closed) {
             window.close();
         }
         // Close the window if the Esc key is pressed (only if the window wasn't already closed)
-        else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
+        else if (event.type == Event::KeyPressed && event.key.code == Keyboard::Escape) {
             window.close();
         }
     }
