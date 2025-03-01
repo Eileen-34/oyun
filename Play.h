@@ -5,20 +5,22 @@
 #include <SFML/Graphics.hpp>
 #include "Button.h"
 
+using namespace sf;
+
 // Play class represents the gameplay screen
 class Play {
 public:
     // Constructor
-    Play(const sf::Font& font);
+    Play(const Font& font);
 
     // Handles user input events
-    void handleEvent(const sf::Event& event, const sf::RenderWindow& window);
+    void handleEvent(const Event& event, const RenderWindow& window);
 
     // Updates the state of the play screen
-    void update(const sf::RenderWindow& window);
+    void update(const RenderWindow& window);
 
     // Draws the play screen
-    void draw(sf::RenderWindow& window) const;
+    void draw(RenderWindow& window) const;
 
     // Resets the game state
     void reset();
@@ -32,25 +34,25 @@ public:
 
 private:
     // Fonts used for all the text components
-    sf::Font font;
+    Font font;
     // Text components
-    sf::Text roundText;
-    sf::Text playerLabelText;
-    sf::Text opponentLabelText;
-    sf::Text playerScoreText;
-    sf::Text playerChoiceText;
-    sf::Text opponentChoiceText;
-    sf::Text opponentScoreText;
-    sf::Text resultText;
-    sf::Text takeYourPickText;
+    Text roundText;
+    Text playerLabelText;
+    Text opponentLabelText;
+    Text playerScoreText;
+    Text playerChoiceText;
+    Text opponentChoiceText;
+    Text opponentScoreText;
+    Text resultText;
+    Text takeYourPickText;
 
     // Textures and sprites for rock, paper, and scissors
-    sf::Texture rockTexture;
-    sf::Texture paperTexture;
-    sf::Texture scissorsTexture;
-    sf::Sprite rockSprite;
-    sf::Sprite paperSprite;
-    sf::Sprite scissorsSprite;
+    Texture rockTexture;
+    Texture paperTexture;
+    Texture scissorsTexture;
+    Sprite rockSprite;
+    Sprite paperSprite;
+    Sprite scissorsSprite;
 
     // Buttons
     Button backToMenuButton;
@@ -62,7 +64,7 @@ private:
     int currentRound;
 
     // Timer and delay for game ove
-    sf::Clock gameOverTimer; // Timer to track the delay
+    Clock gameOverTimer; // Timer to track the delay
     bool isGameOverDelay;    // Flag to indicate if the delay is active
     float gameOverDelayDuration; // Duration of the delay in seconds
 

@@ -6,11 +6,13 @@
 #include <cstdlib>
 #include <ctime>
 
+using namespace sf;
+
 //Constructor of the play screen
-Play::Play(const sf::Font& font)
+Play::Play(const Font& font)
         : font(font), playerScore(0), opponentScore(0), currentRound(1),
-          backToMenuButton("Back", font, sf::Vector2f(50, 700), sf::Vector2f(150, 50)),
-          quitButton("Quit", font, sf::Vector2f(600, 700), sf::Vector2f(150, 50)),
+          backToMenuButton("Back", font, Vector2f(50, 700), Vector2f(150, 50)),
+          quitButton("Quit", font, Vector2f(600, 700), Vector2f(150, 50)),
           onGameOver(nullptr), isGameOverDelay(false), gameOverDelayDuration(1.0f) { // 1 seconds delay
     // Sets the random number generator with the current time
     std::srand(std::time(nullptr));
@@ -61,12 +63,12 @@ Play::Play(const sf::Font& font)
     // Initialize choice texts
     playerChoiceText.setFont(font);
     playerChoiceText.setCharacterSize(28);
-    playerChoiceText.setFillColor(sf::Color::White);
+    playerChoiceText.setFillColor(Color::White);
     playerChoiceText.setPosition(50, 250);
 
     opponentChoiceText.setFont(font);
     opponentChoiceText.setCharacterSize(28);
-    opponentChoiceText.setFillColor(sf::Color::White);
+    opponentChoiceText.setFillColor(Color::White);
     opponentChoiceText.setPosition(600, 250);
 
     // Set up font of the texts
@@ -76,7 +78,7 @@ Play::Play(const sf::Font& font)
     // Set up "Take your pick" text
     takeYourPickText.setString("Take your pick");
     takeYourPickText.setCharacterSize(26);
-    takeYourPickText.setFillColor(sf::Color::White);
+    takeYourPickText.setFillColor(Color::White);
 
     float windowWidth = 800;
 
@@ -108,9 +110,9 @@ Play::Play(const sf::Font& font)
 }
 
 // Handles user input events
-void Play::handleEvent(const sf::Event& event, const sf::RenderWindow& window) {
-    if (event.type == sf::Event::MouseButtonPressed) {
-        sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+void Play::handleEvent(const Event& event, const RenderWindow& window) {
+    if (event.type == Event::MouseButtonPressed) {
+        Vector2f mousePos = window.mapPixelToCoords(Mouse::getPosition(window));
 
         if (rockSprite.getGlobalBounds().contains(mousePos)) {
             int opponentChoice = rand() % 3;
@@ -130,7 +132,7 @@ void Play::handleEvent(const sf::Event& event, const sf::RenderWindow& window) {
 }
 
 // Draws the Play screen (text, sprites, and buttons) to the window
-void Play::draw(sf::RenderWindow& window) const {
+void Play::draw(RenderWindow& window) const {
     window.draw(roundText);
     window.draw(playerLabelText);
     window.draw(opponentLabelText);
@@ -209,7 +211,7 @@ void Play::determineWinner(int playerChoice, int opponentChoice) {
         gameOverTimer.restart(); // Starts the timer
     }
 }
-void Play::update(const sf::RenderWindow& window) {
+void Play::update(const RenderWindow& window) {
     backToMenuButton.update(window);
     quitButton.update(window);
 
