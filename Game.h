@@ -1,6 +1,7 @@
 #ifndef OYUN_GAME_H
 #define OYUN_GAME_H
 
+#pragma once
 #include <SFML/Graphics.hpp>
 #include "Menu.h"
 #include "About.h"
