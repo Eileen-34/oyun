@@ -1,6 +1,7 @@
 #ifndef OYUN_GAMEOVER_H
 #define OYUN_GAMEOVER_H
 
+#pragma once
 #include <SFML/Graphics.hpp>
 #include "Button.h"
 
