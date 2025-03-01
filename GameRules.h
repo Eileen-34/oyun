@@ -16,10 +16,10 @@ public:
     // Handles user input events (e.g., mouse clicks)
     void handleEvent(const Event& event, const RenderWindow& window);
 
-    // Updates the state of the GameRules screen (e.g., button states)
+    // Updates the state of the "rules" screen (e.g., button states)
     void update(const RenderWindow& window);
 
-    // Draws the GameRules screen (background, text, and buttons) to the window
+    // Draws the rules screen (background, text, and buttons) to the window
     void draw(RenderWindow& window) const;
 
     // Sets the callback function for the "Back" button click
