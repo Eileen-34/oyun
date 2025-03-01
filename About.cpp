@@ -1,3 +1,4 @@
+#pragma once
 #include "About.h"
 #include "about_background.h" // Byte array for about_background.jpg
 
