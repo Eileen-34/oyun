@@ -1,7 +1,7 @@
 # Rock Paper Scissors Game
 
 ## Overview
-This is a simple Rock Paper Scissors game developed in C++ using the SFML v2.6.2 (Simple and Fast Multimedia Library). 
+This is a Rock Paper Scissors game developed in C++ using the SFML v2.6.2 (Simple and Fast Multimedia Library). 
 The game features a menu, play, rules, and an about page.
 The game is self-contained, meaning all assets are embedded into the executable. No additional files are required to run the game.
 ---
