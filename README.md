@@ -96,9 +96,9 @@ The game features a menu, play, rules, and an about page.
 - **Game Over Screen:** Shows the final score and allows replay or exit.
   
 **Note on assets:**
-  All assets (such as fonts and images) are embedded as hex code in the executable, enabling memory-based loading
-  instead of file-based methods.
-  This avoids potential errors related to file paths or missing resources and ensures successful execution across different macOS devices.
+  - All assets (such as fonts and images) are embedded as hex code in the executable, enabling memory-based loading
+  instead of file-based methods. This avoids potential errors related to file paths or missing resources and ensures 
+  successful execution across different macOS devices.
 ---
 
 ## How to Play
