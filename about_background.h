@@ -1,7 +1,7 @@
 /// Background image for the About page.
 /// All the assets are converted to hex code in order to use "loadFromMemory" function instead of "loadFromFile"
-/// function" in the game.
-/// The main purpose of using byte array here is to avoid any errors while opening executable on different MacOS devices.
+/// function in the game.
+/// The main purpose of using byte array here is to avoid any errors while opening executable on different macOS devices.
 
 unsigned char assets_about_background_jpg[] = {
   0xff, 0xd8, 0xff, 0xe0, 0x00, 0x10, 0x4a, 0x46, 0x49, 0x46, 0x00, 0x01,

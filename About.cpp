@@ -4,6 +4,7 @@
 
 using namespace sf;
 
+//Constructor of About screen
 About::About(const sf::Font& font)
         : backButton("Back", font, Vector2f(200, 700), sf::Vector2f(100, 50)) {
     // Load the background image from memory
@@ -19,7 +20,7 @@ About::About(const sf::Font& font)
     }
     backgroundSprite.setTexture(backgroundTexture);
      /// loadFromFile function does not work on other macOS devices even if  "../assets/about_background.jpg" instead of the
-     /// whole path is given. So, I decided to use loadFromMemory function by converting each assets into hex code in
+     /// whole path is given. So, I decided to use loadFromMemory function by converting each asset into hex code in
      /// separate header files, which makes the game self-contained.
      */
 
@@ -53,10 +54,12 @@ About::About(const sf::Font& font)
     aboutText.setPosition(200, 250); // Center of window
 }
 
+// Handles events such as mouse clicks and key presses for the About screen
 void About::handleEvent(const sf::Event& event, const RenderWindow& window) {
     backButton.handleEvent(event, window);
 }
 
+// Updates the About screen logic (such as button states)
 void About::update(const RenderWindow& window) {
     backButton.update(window);
 }
@@ -68,10 +71,11 @@ void About::draw(RenderWindow& window) const {
     // Draw the "About" text
     window.draw(aboutText);
 
-    // Draw the "Back to Menu" button
+    // Draw the "Back" button
     backButton.draw(window);
 }
 
+// Sets a callback function when the back button is clicked
 void About::setOnBackClicked(std::function<void()> onClick) {
     backButton.setOnClick(onClick);
 }
