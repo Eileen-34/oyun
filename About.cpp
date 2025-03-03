@@ -18,6 +18,9 @@ About::About(const sf::Font& font)
         throw std::runtime_error("Failed to load about background image!");
     }
     backgroundSprite.setTexture(backgroundTexture);
+     /// loadFromFile function does not work on other macOS devices even if  "../assets/about_background.jpg" instead of the
+     /// whole path is given. So, I decided to use loadFromMemory function by converting each assets into hex code in
+     /// separate header files, which makes the game self-contained.
      */
 
     // Resize the background image
