@@ -1,9 +1,10 @@
 # Rock Paper Scissors Game
 
 ## Overview
-This is a simple Rock Paper Scissors game developed in C++ using the SFML v2.6.2 (Simple and Fast Multimedia Library). 
-The game features a menu, play, rules, and an about page.
-The game is self-contained, meaning all assets are embedded into the executable. No additional files are required to run the game.
+This is a Rock Paper Scissors Game developed by Aylin Oymak as a project submission for
+"Programming in C++" course taught by D. Hackbarth in Summer Term '25
+at Berlin School of Economics and Law.
+
 ---
 
 ## Table of Contents
@@ -22,7 +23,7 @@ To build and run this game on macOS, you need the following:
 - **macOS**: Tested on macOS (13.x) and later.
 - **CLion**: JetBrains IDE for C++ development.
 - **CMake**: Build system (version 3.26 or higher).
-- **SFML**: Simple and Fast Multimedia library (version 2.6.2).
+- **SFML**: Simple and Fast Multimedia Library (version 2.6.2).
 
 ---
 
@@ -68,41 +69,49 @@ The executable (oyun) will be generated in the build folder.
 
 2. **Run the Game**:
 
-   --> **Option 1: Run from the Terminal**
-    - Navigate to the cmake-build-debug folder:
-      ```bash
-      cd cmake-build-debug
-      ```
-    - Run the executable:
-      ```bash
-      ./oyun
-      ```
-
-   --> **Option 2: Run from Finder**
+   --> **Option 1: Run from Finder**
     - Open the oyun project directory in Finder. 
     - Navigate to the cmake-build-debug folder. 
     - Locate the executable file named oyun. 
     - Double-click the oyun file to open the game in a new window.
 
+   --> **Option 2: Run from the Terminal**
+   - Navigate to the cmake-build-debug folder:
+     ```bash
+     cd cmake-build-debug
+     ```
+   - Run the executable:
+     ```bash
+     ./oyun
+     ```
 ---
 
 ## Game Features
-- **Main Menu**: Start the game, view rules, about page, or exit.
-- **Gameplay**: Play Rock Paper Scissors against the computer.
-- **Rules Page**: Learn how to play the game.
-- **About Page**: Information about the game and developer.
-- **Game Over Screen**: Shows the final score and allows replay or exit.
+The game features a menu, play, rules, and an about page.
 
+- **Menu:** Start the game, view rules, about page, or exit by clicking on x or using esc on keyboard.
+- **Play:** Play Rock Paper Scissors against the computer.
+- **Rules:** Learn how to play the game.
+- **About:** Information about the game and developer.
+- **Game Over Screen:** Shows the final score and allows replay or exit.
+  
+**Note on assets:**
+  All assets (such as fonts and images) are embedded as hex code in the executable, enabling memory-based loading
+  instead of file-based methods.
+  This avoids potential errors related to file paths or missing resources and ensures successful execution across different macOS devices.
 ---
 
 ## How to Play
-1. **Main Menu**:
+1. **Menu**:
     - Use the mouse to click on buttons to navigate through the game.
 
-2. **Gameplay**:
+
+2. **Play**:
     - Click on the Rock, Paper, or Scissors buttons to make your choice.
     - The computer will randomly select its choice.
     - The winner of each round is determined based on the rules of Rock Paper Scissors.
+    - Player can go back to menu page and quit the game while playing.
+
 
 3. **Game Over**:
     - After 6th round, the game ends, and the final score is displayed.
@@ -113,7 +122,7 @@ The executable (oyun) will be generated in the build folder.
 ## Project Structure
 ```
 oyun/
-├── assets/
+├── assets/                  # Font and images used in the game
 ├── cmake-build-debug/       # Build directory (contains the executable)
 ├── .gitignore               # Specifies files to ignore in Git  
 ├── About.cpp                # Implementation of the About page
